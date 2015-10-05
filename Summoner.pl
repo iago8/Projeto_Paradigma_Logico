@@ -43,6 +43,11 @@ champions(theAbomination,0,8,7,writhingSpawn,theFilth).
 champions(violet,2,4,4,whirlingBlade,cloaks).
 champions(mundol,3,7,5,mageMaster,mercenaries).
 
+%new types of match
+%use the information of the rules for creating new types of relationships
+
+%criar cartas eventos
+
 
 %discoverFactionUnit
 faction_common(X,Y,W):-summoner(W,_,_,_,_,X),commons(Y,_,_,_,_,_,X);
@@ -78,3 +83,16 @@ question1:-write('which faction is part of the first basic set in brazil?'),read
 			answer = phoenixElves;tundraOrcs;vangards;fallenKingdom;theFilth;cloaks;mercenaries,write('errou'),
 			information3,!.
 information3:-write('ends here information'),!.
+
+
+%create your faction
+%using the rules to reach the lowest level Comm unit to reach a summoner
+
+%criaDeck
+%recursao de unidade comum
+%recursao de unidade campea
+%escolher um summmoner 
+%escolher carta evento
+%print no deck
+%comparar com outros deck para ver qual se aproxima mais
+
