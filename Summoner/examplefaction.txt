@@ -1,0 +1,33 @@
+in the database:
+summoner(retTalus,2,5,range,raiseTheDead,fallenKingdom).
+
+commons(zombieWarrior,1,2,2,melee,infect,fallenKingdom).
+commons(reaper,1,2,3,melee,soulHarvest,fallenKingdom).
+commons(ghoul,2,2,3,melee,ravenousHunger,fallenKingdom).
+commons(reaver,1,2,2,melee,undying,fallenKingdom).
+commons(skeletalArcher,1,1,1,range,magicLocked,fallenKingdom).
+
+champions(dragos,2,5,5,melee,lifeDrain,fallenKingdom).
+champions(skhull,3,6,6,melee,fear,fallenKingdom).
+champions(elutBal,4,7,5,melee,summonedByBlood,fallenKingdom).
+champions(anica,2,6,6,melee,spiritDrain,fallenKingdom).
+
+for create your own kind of faction 
+you will use the book rule, that says"1 summoner, 18 commons, 3 champions(different)
+(3 wallcard and 9 eventcard). you can see more in SummonerWars-Rulebook.pdf"
+
+for example:
+summoner(retTalus,2,5,range,raiseTheDead,fallenKingdom).       X1
+
+
+commons(zombieWarrior,1,2,2,melee,infect,fallenKingdom).       X5
+commons(reaper,1,2,3,melee,soulHarvest,fallenKingdom).         X5
+commons(ghoul,2,2,3,melee,ravenousHunger,fallenKingdom).       X0
+commons(reaver,1,2,2,melee,undying,fallenKingdom).             X0
+commons(phantom,1,1,1,melee,possess,fallenKingdom).            X1
+commons(skeletalArcher,1,1,1,range,magicLocked,fallenKingdom). X4
+commons(vermin,1,1,1,melee,Plague,mercenaries).                X3
+
+champions(malevolence,4,7,7,melee,cursedBlade,mercenaries).    X1
+champions(elutBal,4,7,5,melee,summonedByBlood,fallenKingdom).  X1
+champions(anica,2,6,6,melee,spiritDrain,fallenKingdom).        X1

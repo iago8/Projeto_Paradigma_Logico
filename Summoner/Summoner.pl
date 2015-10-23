@@ -49,6 +49,7 @@ commons(reaper,1,2,3,melee,soulHarvest,fallenKingdom).
 commons(ghoul,2,2,3,melee,ravenousHunger,fallenKingdom).
 commons(reaver,1,2,2,melee,undying,fallenKingdom).
 commons(skeletalArcher,1,1,1,range,magicLocked,fallenKingdom).
+commons(phantom,1,1,1,melee,possess,fallenKingdom).
 commons(zealot,1,0,1,melee,bloodlust,theFilth).
 commons(cultist,1,0,1,range,hexThrower,theFilth).
 commons(edibleMutant,1,3,6,feedTheBrethren,theFilth).
@@ -61,6 +62,7 @@ commons(gunner,1,1,1,range,greaterSneak,cloaks).
 commons(stoneGolem,2,2,3,melee,slow,mercenaries).
 commons(runeMage,1,2,2,range,siphon,mercenaries).
 commons(apprenticeMage,1,0,1,melee,magicShot,mercenaries).
+commons(vermin,1,1,1,melee,Plague,mercenaries).
 commons(deceiver,1,1,1,range,stun,benders).
 commons(controller,2,2,1,range,telekineticBlast,benders).
 commons(breaker,1,2,1,range,memoryBreak,bender).
@@ -116,6 +118,7 @@ champions(scam,2,5,5,range,Escape,cloaks).
 champions(mundol,3,7,5,mageMaster,mercenaries).
 champions(khanQueso,2,3,4,melee,plague,mercenaries).
 champions(theSeer,2,3,3,range,manipulateDestiny,mercenaries).
+champions(malevolence,4,7,7,melee,cursedBlade,mercenaries).
 champions(kalal,3,7,5,range,glimpseTheFuture,benders).
 champions(sorgwen,3,5,3,range,telepathicCommand,benders).
 champions(gulldune,2,5,4,range,mindCapture,benders).
@@ -138,21 +141,39 @@ champions(malidala,2,5,3,range,shadowDancer,shadowElves).
 
 %new types of match
 %use the information of the rules for creating new types of relationships
+unity_faction(X):-faction_horde(X,Y,W,T).
+attack_mode_common(Q,W,E):-commons(Q,_,_,_,W,_,E).
+attack_mode_champion(Y,Z):-champions(Y,_,_,_,Z,_,_).
+attack_mode_summoner(A,S):-summoner(A,_,_,S,_,_).
+cost_mode_common(Q,W,E):-commons(Q,_,W,_,_,_,E).
+cost_mode_champions(Y,Z):-champions(Y,_,Z,_,_,_,_).
+lifepoints_mode_common(Q,W,E):-commons(Q,_,_,W,_,_,E).
+lifepoints_mode_champion(Y,Z):-champions(Y,_,_,Z,_,_,_).
+habilityPower_mode_common(Q,W,E):-commons(Q,_,_,_,_,W,E).
+habilityPower_mode_champion(Y,Z):-champions(Y,_,_,_,_,Z,_).
+habilityPower_mode_summoner(A,S):-summoner(A,_,_,_,_,S,_).
+
+%more_lifePoints(T,S,X,W,Q,D):-commons(T,_,_,S,_,_,X),commons(W,_,_,Q,_,_,D),.
+
+%create relationship
+:-op(900, xfx, [itIs]).
+
+
 
 %criar cartas eventos
 
 
 %discoverFactionUnit
-faction_common(X,Y,W):-summoner(W,_,_,_,_,X),commons(Y,_,_,_,_,_,X);
-faction_champions(X,Y,W):-summoner(W,_,_,_,_,X),champions(Y,_,_,_,_,_,X);
-faction_horde(X,Y,W,T):-summoner(W,_,_,_,_,X),champions(Y,_,_,_,_,_,X),commons(T,_,_,_,_,_,X);
+faction_common(X,W,T):-summoner(W,_,_,_,_,X),commons(T,_,_,_,_,_,X).
+faction_champions(X,W,Y):-summoner(W,_,_,_,_,X),champions(Y,_,_,_,_,_,X).
+faction_horde(X,Y,W,T):-summoner(W,_,_,_,_,X),champions(Y,_,_,_,_,_,X),commons(T,_,_,_,_,_,X).
 
 %discoverNameandHabilityPower
 
 
 %updateDatabase
 
-forget(X):-forget42(X).fail.
+forget(X):-forget42(X),fail.
 forget(X).
 
 forget42(X):-retract(X).
@@ -179,6 +200,8 @@ question1:-write('which faction is part of the first basic set in brazil?'),read
 			answer = phoenixElves;tundraOrcs;vangards;fallenKingdom;theFilth;cloaks;mercenaries,write('errou'),
 			information3,!.
 information3:-write('ends here information'),!.
+
+%new information
 
 
 %create your faction
